@@ -18,10 +18,10 @@ public:
 
 private:
 	bool m_ProgramRunning;
-	int m_Input;
+	int m_iInput;
 	CDeque* m_pDeque;
-	int m_DequeuedData;
-	int m_PeekedData;
+	int m_iDequeuedData;
+	int m_iPeekedData;
 	
 };
 

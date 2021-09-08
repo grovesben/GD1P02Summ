@@ -4,11 +4,11 @@
 CDequeManager::CDequeManager()
 {
     m_ProgramRunning = true;
-    m_Input = 0;
+    m_iInput = 0;
     CDeque* deque = new CDeque;
     m_pDeque = deque;
-    m_DequeuedData = 0;
-    m_PeekedData = 0;
+    m_iDequeuedData = 0;
+    m_iPeekedData = 0;
 }
 
 CDequeManager::~CDequeManager()
@@ -38,21 +38,21 @@ int CDequeManager::Run()
 
 void CDequeManager::Menu()
 {
-    m_Input = _getch();
-    while (m_Input < 49 || m_Input > 56) {
-        if (m_Input < 49 || m_Input > 56) {
+    m_iInput = _getch();
+    while (m_iInput < 49 || m_iInput > 56) {
+        if (m_iInput < 49 || m_iInput > 56) {
             std::cout << "Please choose from the menu.\n";
-            m_Input = _getch();
+            m_iInput = _getch();
         }
     } 
 
-    switch (m_Input) {
+    switch (m_iInput) {
     case 49: // ascii "1"
     {
         system("CLS");
-        m_Input = Input();
+        m_iInput = Input();
         system("CLS");
-        m_pDeque->Enqueue_Front(m_Input);
+        m_pDeque->Enqueue_Front(m_iInput);
         m_pDeque->Display();
 
        break;
@@ -60,9 +60,9 @@ void CDequeManager::Menu()
     case 50: // ascii "2"
     {
         system("CLS");
-        m_Input = Input();
+        m_iInput = Input();
         system("CLS");
-        m_pDeque->Enqueue_Back(m_Input);
+        m_pDeque->Enqueue_Back(m_iInput);
         m_pDeque->Display();
         break;
     }
@@ -75,8 +75,8 @@ void CDequeManager::Menu()
         }
         else
         {
-            m_pDeque->Dequeue_Front(m_DequeuedData);
-            std::cout << "Dequeued data: " << m_DequeuedData << std::endl;
+            m_pDeque->Dequeue_Front(m_iDequeuedData);
+            std::cout << "Dequeued data: " << m_iDequeuedData << std::endl;
             m_pDeque->Display();
         }
         break;
@@ -90,8 +90,8 @@ void CDequeManager::Menu()
         }
         else
         {
-            m_pDeque->Dequeue_Back(m_DequeuedData);
-            std::cout << "Dequeued data: " << m_DequeuedData << std::endl;
+            m_pDeque->Dequeue_Back(m_iDequeuedData);
+            std::cout << "Dequeued data: " << m_iDequeuedData << std::endl;
             m_pDeque->Display();
         }
         break;
@@ -105,8 +105,8 @@ void CDequeManager::Menu()
         }
         else
         {
-            m_pDeque->Peek_Front(m_PeekedData);
-            std::cout << "Peeked data: " << m_PeekedData << std::endl;
+            m_pDeque->Peek_Front(m_iPeekedData);
+            std::cout << "Peeked data: " << m_iPeekedData << std::endl;
             m_pDeque->Display();
         }
         break;
@@ -120,8 +120,8 @@ void CDequeManager::Menu()
         }
         else
         {
-            m_pDeque->Peek_Back(m_PeekedData);
-            std::cout << "Peeked data: " << m_PeekedData << std::endl;
+            m_pDeque->Peek_Back(m_iPeekedData);
+            std::cout << "Peeked data: " << m_iPeekedData << std::endl;
             m_pDeque->Display();
         }
         break;
@@ -156,9 +156,9 @@ int CDequeManager::Input()
         
         std::cout << "Please input an integer: ";
         
-        if (std::cin >> m_Input)
+        if (std::cin >> m_iInput)
         {
-            return m_Input;
+            return m_iInput;
         }
         else
         {
